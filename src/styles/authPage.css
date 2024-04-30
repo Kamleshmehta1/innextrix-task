@@ -1,0 +1,11 @@
+.authpage-container {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-image: url('../assets/signin-background-img.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
