@@ -55,7 +55,7 @@ function TeamList(props: teamListProps) {
   ];
 
   return (
-    <Card bodyStyle={{ padding: '0.8rem' }}>
+    <Card styles={{ body: { padding: '1rem' } }}>
       <Space direction="vertical" style={{ width: '100%' }}>
         <Row align={'middle'}>
           <Col span={8}>
@@ -71,10 +71,10 @@ function TeamList(props: teamListProps) {
           </Col>
         </Row>
         <Row align={'middle'} justify={'space-around'}>
-          {cardBottomIcons.map((item) => (
-            <Col span={4.5} key={item.id}>
-              <span style={{ color: item?.color || '' }}>
-                {item?.isStar && isBookmarked ? <StarOutlined /> : item.icon}
+          {cardBottomIcons.map(({ id, color, isStar, icon }) => (
+            <Col span={4.5} key={id}>
+              <span style={{ color: color || '' }}>
+                {isStar && isBookmarked ? <StarOutlined /> : icon}
               </span>
             </Col>
           ))}
