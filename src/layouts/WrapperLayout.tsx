@@ -19,10 +19,12 @@ import {
   AppstoreOutlined,
   MoonOutlined,
 } from '@ant-design/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { initialize } from '../redux/slice/authSlice';
 import { themeColor } from '../utils/themeColor';
-import { useState } from 'react';
+import React from 'react';
+import { setCollapsed } from '../redux/slice/sideBarSlice';
+import { RootState } from '../redux/store';
 
 type wrapperLayout = {
   children: React.ReactNode;
@@ -31,7 +33,9 @@ type wrapperLayout = {
 function WrapperLayout(props: wrapperLayout) {
   const { children } = props;
   const dispatch = useDispatch();
-  const [collapsed, setCollapsed] = useState(false);
+  const collapsed = useSelector(
+    (state: RootState) => state?.sideBar?.collapsed
+  );
 
   const items: MenuProps['items'] = [
     {
@@ -58,7 +62,7 @@ function WrapperLayout(props: wrapperLayout) {
             <Button
               type="text"
               icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => setCollapsed(!collapsed)}
+              onClick={() => dispatch(setCollapsed({ collapsed: !collapsed }))}
               style={{
                 fontSize: '16px',
                 width: 64,

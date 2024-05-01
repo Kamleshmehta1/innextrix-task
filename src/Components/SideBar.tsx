@@ -1,5 +1,4 @@
 import Sider from 'antd/es/layout/Sider';
-import { useState } from 'react';
 import Image from '../CommonComponents/Image';
 import { Menu } from 'antd';
 import {
@@ -13,9 +12,13 @@ import {
 } from '@ant-design/icons';
 import smallLogo from '../assets/mobileLogo.png';
 import Logo from '../assets/logo.svg';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
 
 function SideBar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const collapsed = useSelector(
+    (state: RootState) => state?.sideBar?.collapsed
+  );
 
   const item = [
     {
@@ -72,7 +75,7 @@ function SideBar() {
     <Sider
       width={250}
       collapsed={collapsed}
-      onCollapse={(value) => setCollapsed(value)}
+      // onCollapse={(value) => setCollapsed(value)}
     >
       {collapsed ? (
         <div
