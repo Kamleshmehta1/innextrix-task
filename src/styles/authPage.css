@@ -2,10 +2,10 @@
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-image: url('../assets/signin-background-img.jpg');
+  background-image: url('../assets/signin-background-img.svg');
   display: flex;
   justify-content: center;
   align-items: center;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100vw auto;
 }

@@ -97,7 +97,12 @@ function SignIn() {
             </Button>
           </Col>
           <Col span={24}>
-            <Button block onClick={handleLoginAsGuest}>
+            <Button
+              style={{ backgroundColor: themeColor }}
+              type="primary"
+              block
+              onClick={handleLoginAsGuest}
+            >
               Login as guest
             </Button>
           </Col>
