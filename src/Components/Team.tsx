@@ -7,6 +7,8 @@ import { handleDebounce } from '../utils/debounce';
 import { themeColor } from '../utils/themeColor';
 import TeamList from './TeamList';
 import '../styles/teams.css';
+import Image from '../CommonComponents/Image';
+import NoDataPage from '../assets/no-data.svg';
 
 function Team() {
   const [search, setSearch] = useState<string>('');
@@ -70,13 +72,23 @@ function Team() {
         </Row>
       </Card>
       <Row style={{ margin: '2rem auto' }} wrap={true} gutter={[12, 16]}>
-        {filteredArr?.map((ele) => {
-          return (
-            <Col xl={4} lg={6} md={8} sm={12} xs={24} key={ele?.id}>
-              <TeamList {...ele} />
-            </Col>
-          );
-        })}
+        {filteredArr?.length ? (
+          filteredArr?.map((ele) => {
+            return (
+              <Col xl={4} lg={6} md={8} sm={12} xs={24} key={ele?.id}>
+                <TeamList {...ele} />
+              </Col>
+            );
+          })
+        ) : (
+          <div
+            style={{
+              margin: 'auto',
+            }}
+          >
+            <Image url={NoDataPage} width={400} height={400} />
+          </div>
+        )}
       </Row>
     </>
   );

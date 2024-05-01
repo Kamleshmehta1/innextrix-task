@@ -1,0 +1,14 @@
+.contact-list-container {
+  overflow: scroll;
+  height: 200px;
+}
+
+.contact-list-container::-webkit-scrollbar {
+  display: none;
+}
+
+.phoneSearchBar ::placeholder {
+  color: '#F4F3FE';
+  background-color: aliceblue;
+  text-align: center;
+}

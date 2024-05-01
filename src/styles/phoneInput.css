@@ -1,0 +1,21 @@
+.phoneSearchBar::placeholder {
+  color: #ccc !important;
+  font-size: 24px;
+}
+
+.phoneSearchBar {
+  outline: none !important;
+  text-align: center !important;
+  font-weight: 400 !important;
+  color: #ccc !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  width: 100% !important;
+  font-size: 24px;
+  padding: 1rem !important;
+}
+
+.ant-modal-close-x {
+  color: #ccc !important;
+}

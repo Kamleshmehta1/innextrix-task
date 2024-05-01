@@ -9,6 +9,7 @@ const teamListData = Array(15)
       mobileNumber: '9876543210',
       isBookmarked: false,
       avatar: `https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`,
+      mobileType: index % 2 === 0 ? 'Home' : 'business',
     };
   });
 
