@@ -22,7 +22,7 @@ function SignIn() {
   const onSubmit = async (values: FormValues) => {
     const { email, password } = values;
 
-    const storedUsers = JSON.parse(localStorage.getItem('credentials')) || [];
+    const storedUsers = JSON.parse(localStorage.getItem('credentials')!) || [];
 
     const credentials = storedUsers?.find(
       (ele: FormValues): boolean => ele?.email === email
@@ -43,7 +43,7 @@ function SignIn() {
     form.resetFields();
 
     dispatch(initialize({ isAuthenticated: true }));
-    navigate(AUTHORIZED_PATHS.HOME.fullPath);
+    navigate(AUTHORIZED_PATHS.TEAM.fullPath);
     localStorage.setItem('isAuthenticated', JSON.stringify(true));
     message.success('Sign in successfully!', 2);
   };

@@ -24,7 +24,7 @@ function SignIn() {
 
     const hashedPassword = await bcrypt.hash(password, 13);
 
-    const credentials = JSON.parse(localStorage.getItem('credentials')) || [];
+    const credentials = JSON.parse(localStorage.getItem('credentials')!) || [];
 
     if (credentials?.some((ele: FormValues): boolean => ele?.email === email)) {
       message.error('Email id already present!', 2);

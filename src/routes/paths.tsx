@@ -12,11 +12,11 @@ export const UNAUTHORIZE_PATH = {
 
 export const AUTHORIZED_PATHS = {
   root: USER_PATH,
-  HOME: {
-    path: `/home`,
-    fullPath: `${USER_PATH}/home`,
+  TEAM: {
+    path: `/team`,
+    fullPath: `${USER_PATH}/team`,
     permissions: [],
-    title: 'Home',
-    pageName: 'Home',
+    title: 'Team',
+    pageName: 'Team',
   },
 };

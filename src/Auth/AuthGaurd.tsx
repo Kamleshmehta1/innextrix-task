@@ -2,6 +2,7 @@ import React from 'react';
 import useAuth from './useAuth';
 import { Navigate } from 'react-router-dom';
 import { UNAUTHORIZE_PATH } from '../routes/paths';
+import { Layout } from 'antd';
 
 type authProps = {
   children: React.ReactNode;
@@ -16,7 +17,15 @@ function AuthGuard(props: authProps) {
     return <Navigate to={UNAUTHORIZE_PATH.SIGN_IN.fullPath} />;
   }
 
-  return <>{children}</>;
+  return (
+    <Layout
+      style={{
+        minHeight: '100vh',
+      }}
+    >
+      {children}
+    </Layout>
+  );
 }
 
 export default AuthGuard;

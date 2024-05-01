@@ -3,6 +3,7 @@ import { AUTHORIZED_PATHS, ROOTS_PATH, UNAUTHORIZE_PATH } from './paths';
 import { lazy } from 'react';
 import AuthGuard from '../Auth/AuthGaurd';
 import MainLayout from '../Components/MainLayout';
+import WrapperLayout from '../layouts/WrapperLayout';
 
 const UnAuthGuard = lazy(() => import('../Auth/UnAuthGaurd'));
 const Layout = lazy(() => import('../Auth/Layout'));
@@ -44,7 +45,11 @@ export default function Routes() {
       children: [
         {
           path: AUTHORIZED_PATHS.root + '/*',
-          element: <UserRoutes />,
+          element: (
+            <WrapperLayout>
+              <UserRoutes />
+            </WrapperLayout>
+          ),
         },
       ],
     },

@@ -12,7 +12,7 @@ function UnAuthGuard(props: unAuthProps) {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
-    return <Navigate to={AUTHORIZED_PATHS.HOME.fullPath} />;
+    return <Navigate to={AUTHORIZED_PATHS.TEAM.fullPath} />;
   }
 
   return <>{children}</>;

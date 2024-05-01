@@ -7,7 +7,7 @@ const Home = lazy(() => import('../Components/Home'));
 export default function Routes() {
   return useRoutes([
     {
-      path: AUTHORIZED_PATHS.HOME.path,
+      path: AUTHORIZED_PATHS.TEAM.path,
       element: <Home />,
     },
   ]);
