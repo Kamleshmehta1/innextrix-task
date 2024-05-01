@@ -1,6 +1,5 @@
-import Sider from 'antd/es/layout/Sider';
-import Image from '../CommonComponents/Image';
-import { Menu } from 'antd';
+import React from 'react';
+import { Layout, Menu } from 'antd';
 import {
   GoogleOutlined,
   PhoneOutlined,
@@ -8,13 +7,27 @@ import {
   SettingOutlined,
   WechatOutlined,
   ContactsOutlined,
+  MobileOutlined,
+  DesktopOutlined,
   TeamOutlined,
 } from '@ant-design/icons';
-import smallLogo from '../assets/mobileLogo.png';
-import Logo from '../assets/logo.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import useIsMobileScreen from '../customHooks/isMobile';
+import { themeColor } from '../utils/themeColor';
+import '../styles/sideBar.css';
+import Image from '../CommonComponents/Image';
+import smallLogo from '../assets/mobileLogo.png';
+import Logo from '../assets/logo.svg';
+
+const { Sider } = Layout;
+
+interface MenuItem {
+  children: string;
+  icon: React.ReactNode;
+  key: string;
+  label: string;
+}
 
 function SideBar() {
   const isMobile = useIsMobileScreen();
@@ -23,7 +36,7 @@ function SideBar() {
     (state: RootState) => state?.sideBar?.collapsed
   );
 
-  const item = [
+  const item: MenuItem[] = [
     {
       children: '',
       icon: <TeamOutlined />,
@@ -74,8 +87,35 @@ function SideBar() {
     },
   ];
 
+  const bottomMenu: MenuItem[] = [
+    {
+      children: '',
+      icon: <DesktopOutlined />,
+      key: '7',
+      label: 'Web App',
+    },
+    {
+      children: '',
+      icon: <MobileOutlined />,
+      key: '8',
+      label: 'Mobile App',
+    },
+  ];
+
   return (
-    <Sider width={250} collapsed={isMobile || collapsed}>
+    <Sider
+      width={250}
+      collapsed={isMobile || collapsed}
+      style={{
+        height: '100vh',
+        position: 'fixed',
+        zIndex: 100,
+        left: 0,
+        top: 0,
+        bottom: 0,
+        background: themeColor,
+      }}
+    >
       <div
         style={{
           display: 'flex',
@@ -89,10 +129,31 @@ function SideBar() {
 
       <Menu
         theme="dark"
+        style={{ background: themeColor }}
         defaultSelectedKeys={['1']}
         mode="inline"
-        items={item}
-      />
+      >
+        {item.map((menuItem) => (
+          <Menu.Item key={menuItem.key} icon={menuItem.icon}>
+            {menuItem.label}
+          </Menu.Item>
+        ))}
+      </Menu>
+
+      <Menu
+        theme="dark"
+        mode="inline"
+        style={{
+          background: themeColor,
+          transform: 'translateY(170%)',
+        }}
+      >
+        {bottomMenu.map((menuItem) => (
+          <Menu.Item key={menuItem.key} icon={menuItem.icon}>
+            {menuItem.label}
+          </Menu.Item>
+        ))}
+      </Menu>
     </Sider>
   );
 }

@@ -17,15 +17,7 @@ function AuthGuard(props: authProps) {
     return <Navigate to={UNAUTHORIZE_PATH.SIGN_IN.fullPath} />;
   }
 
-  return (
-    <Layout
-      style={{
-        minHeight: '100vh',
-      }}
-    >
-      {children}
-    </Layout>
-  );
+  return <Layout hasSider>{children}</Layout>;
 }
 
 export default AuthGuard;

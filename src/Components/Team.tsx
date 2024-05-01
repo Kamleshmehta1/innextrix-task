@@ -1,5 +1,4 @@
 import { Card, Col, Input, Row, Select, Space, Switch, Typography } from 'antd';
-import { Content } from 'antd/es/layout/layout';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { themeColor } from '../utils/themeColor';
@@ -22,13 +21,7 @@ function Team() {
     });
 
   return (
-    <Content
-      style={{
-        marginTop: '10px',
-        minHeight: 280,
-        background: 'white',
-      }}
-    >
+    <>
       <Card style={{ height: 'atuo' }}>
         <Row gutter={[16, 16]}>
           <Col lg={6} md={8} sm={24} xs={24}>
@@ -77,7 +70,7 @@ function Team() {
           );
         })}
       </Row>
-    </Content>
+    </>
   );
 }
 

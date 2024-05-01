@@ -10,7 +10,7 @@ import {
   Space,
   Typography,
 } from 'antd';
-import { Header } from 'antd/es/layout/layout';
+import { Content, Header } from 'antd/es/layout/layout';
 import {
   UserOutlined,
   MenuFoldOutlined,
@@ -52,12 +52,18 @@ function WrapperLayout(props: wrapperLayout) {
   ];
 
   return (
-    <Layout>
+    <Layout
+      className="site-layout"
+      style={{
+        ...{ marginLeft: collapsed || isMobile ? 80 : 250 },
+        height: '100vh',
+      }}
+    >
       <Header
         style={{
           paddingLeft: 0,
           background: '#fff',
-          height: 'auto',
+          minHeight: 100,
         }}
       >
         <Row>
@@ -116,7 +122,15 @@ function WrapperLayout(props: wrapperLayout) {
           </Col>
         </Row>
       </Header>
-      {children}
+      <Content
+        style={{
+          marginTop: '10px',
+          minHeight: 280,
+          background: 'white',
+        }}
+      >
+        {children}
+      </Content>
     </Layout>
   );
 }
