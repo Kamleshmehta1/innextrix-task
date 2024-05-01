@@ -1,7 +1,12 @@
-import { Typography } from 'antd';
+import { Spin } from 'antd';
+import '../styles/Loader.css';
 
 function LoadingScreen() {
-  return <Typography.Paragraph>Loading...</Typography.Paragraph>;
+  return (
+    <div className="loader">
+      <Spin size="large" />
+    </div>
+  );
 }
 
 export default LoadingScreen;

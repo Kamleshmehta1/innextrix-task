@@ -1,15 +1,18 @@
 import { Navigate, useRoutes } from 'react-router-dom';
 import { AUTHORIZED_PATHS, ROOTS_PATH, UNAUTHORIZE_PATH } from './paths';
 import { lazy } from 'react';
-import AuthGuard from '../Auth/AuthGaurd';
-import MainLayout from '../Components/MainLayout';
-import WrapperLayout from '../layouts/WrapperLayout';
+import Loadable from '../utils/RouteLazyLoading';
 
-const UnAuthGuard = lazy(() => import('../Auth/UnAuthGaurd'));
-const Layout = lazy(() => import('../Auth/Layout'));
-const WithoutCredentials = lazy(() => import('../Auth/WithoutCredentials'));
-const AuthPage = lazy(() => import('../Components/AuthPage'));
-const UserRoutes = lazy(() => import('../routes/UserRoutes'));
+const MainLayout = Loadable(lazy(() => import('../Components/MainLayout')));
+const AuthGaurd = Loadable(lazy(() => import('../Auth/AuthGaurd')));
+const WrapperLayout = Loadable(lazy(() => import('../layouts/WrapperLayout')));
+const UnAuthGuard = Loadable(lazy(() => import('../Auth/UnAuthGaurd')));
+const Layout = Loadable(lazy(() => import('../Auth/Layout')));
+const WithoutCredentials = Loadable(
+  lazy(() => import('../Auth/WithoutCredentials'))
+);
+const AuthPage = Loadable(lazy(() => import('../Components/AuthPage')));
+const UserRoutes = Loadable(lazy(() => import('../routes/UserRoutes')));
 
 export default function Routes() {
   return useRoutes([
@@ -38,9 +41,9 @@ export default function Routes() {
     {
       path: ROOTS_PATH,
       element: (
-        <AuthGuard>
+        <AuthGaurd>
           <MainLayout />
-        </AuthGuard>
+        </AuthGaurd>
       ),
       children: [
         {

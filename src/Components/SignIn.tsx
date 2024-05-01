@@ -19,6 +19,12 @@ function SignIn() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const handleLoginStep = () => {
+    localStorage.setItem('isAuthenticated', JSON.stringify(true));
+    dispatch(initialize({ isAuthenticated: true }));
+    navigate(AUTHORIZED_PATHS.TEAM.fullPath);
+  };
+
   const onSubmit = async (values: FormValues) => {
     const { email, password } = values;
 
@@ -41,12 +47,14 @@ function SignIn() {
     }
 
     form.resetFields();
-
-    dispatch(initialize({ isAuthenticated: true }));
-    navigate(AUTHORIZED_PATHS.TEAM.fullPath);
-    localStorage.setItem('isAuthenticated', JSON.stringify(true));
+    handleLoginStep();
     message.success('Sign in successfully!', 2);
   };
+
+  function handleLoginAsGuest() {
+    handleLoginStep();
+    message.success('Sign in successfully as guest!', 2);
+  }
 
   return (
     <Form
@@ -86,6 +94,11 @@ function SignIn() {
               htmlType="submit"
             >
               Sign In
+            </Button>
+          </Col>
+          <Col span={24}>
+            <Button block onClick={handleLoginAsGuest}>
+              Login as guest
             </Button>
           </Col>
           <Col span={24} style={{ textAlign: 'center' }}>

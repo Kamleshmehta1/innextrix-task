@@ -25,12 +25,15 @@ import { themeColor } from '../utils/themeColor';
 import React from 'react';
 import { setCollapsed } from '../redux/slice/sideBarSlice';
 import { RootState } from '../redux/store';
+import useIsMobileScreen from '../customHooks/isMobile';
 
 type wrapperLayout = {
   children: React.ReactNode;
 };
 
 function WrapperLayout(props: wrapperLayout) {
+  const isMobile = useIsMobileScreen();
+
   const { children } = props;
   const dispatch = useDispatch();
   const collapsed = useSelector(
@@ -59,16 +62,20 @@ function WrapperLayout(props: wrapperLayout) {
       >
         <Row>
           <Col span={12}>
-            <Button
-              type="text"
-              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-              onClick={() => dispatch(setCollapsed({ collapsed: !collapsed }))}
-              style={{
-                fontSize: '16px',
-                width: 64,
-                height: 64,
-              }}
-            />
+            {!isMobile ? (
+              <Button
+                type="text"
+                icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+                onClick={() =>
+                  dispatch(setCollapsed({ collapsed: !collapsed }))
+                }
+                style={{
+                  fontSize: '16px',
+                  width: 64,
+                  height: 64,
+                }}
+              />
+            ) : null}
           </Col>
           <Col span={12} style={{ display: 'flex', justifyContent: 'end' }}>
             <Space direction="horizontal" size={'middle'}>

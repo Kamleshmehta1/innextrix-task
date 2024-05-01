@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  collapsed: false,
+  collapsed: window.innerWidth <= 600 ? true : false,
 };
 
 const sideBarSlice = createSlice({

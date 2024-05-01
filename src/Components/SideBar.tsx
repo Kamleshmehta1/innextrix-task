@@ -14,8 +14,11 @@ import smallLogo from '../assets/mobileLogo.png';
 import Logo from '../assets/logo.svg';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import useIsMobileScreen from '../customHooks/isMobile';
 
 function SideBar() {
+  const isMobile = useIsMobileScreen();
+
   const collapsed = useSelector(
     (state: RootState) => state?.sideBar?.collapsed
   );
@@ -72,34 +75,17 @@ function SideBar() {
   ];
 
   return (
-    <Sider
-      width={250}
-      collapsed={collapsed}
-      // onCollapse={(value) => setCollapsed(value)}
-    >
-      {collapsed ? (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '24px',
-            alignItems: 'center',
-          }}
-        >
-          <Image width={100} height={50} url={smallLogo} />
-        </div>
-      ) : (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '24px',
-            alignItems: 'center',
-          }}
-        >
-          <Image width={100} height={50} url={Logo} />
-        </div>
-      )}
+    <Sider width={250} collapsed={isMobile || collapsed}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '24px 24px 15px 24px',
+          alignItems: 'center',
+        }}
+      >
+        <Image width={100} height={40} url={collapsed ? smallLogo : Logo} />
+      </div>
 
       <Menu
         theme="dark"
