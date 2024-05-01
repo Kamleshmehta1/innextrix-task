@@ -13,6 +13,7 @@ import {
   PhoneFilled,
   AudioOutlined,
   CloseOutlined,
+  AndroidOutlined,
 } from '@ant-design/icons';
 import PhoneSearchInput from './PhoneSearchInput';
 import '../styles/phoneInput.css';
@@ -37,7 +38,7 @@ type KeyPadValuesType = {
 
 export type teamDataType = {
   name: string;
-  avatar: string;
+  avatar: React.ReactNode | string;
   isBookmarked: boolean;
   mobileNumber: string;
   mobileType: string;
@@ -88,14 +89,23 @@ function PhoneModal(props: phoneType) {
             width: '60px',
             transform: isDialed ? 'rotate(225deg)' : 'rotate(0deg)',
           }}
-
-          // onClick={}
         />
       ),
       size: '',
       onclick: () => {
-        setIsRunning(false);
-        setDialedNumber(undefined);
+        if (isDialed) {
+          setIsRunning(false);
+          setDialedNumber(undefined);
+          return;
+        }
+        setIsRunning(true);
+        setDialedNumber({
+          name: 'Unknown',
+          avatar: <AndroidOutlined />,
+          isBookmarked: false,
+          mobileNumber: phoneVal,
+          mobileType: 'Business',
+        });
       },
     },
     {
