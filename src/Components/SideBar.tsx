@@ -145,7 +145,7 @@ function SideBar() {
         mode="inline"
         style={{
           background: themeColor,
-          transform: 'translateY(170%)',
+          transform: `translateY(${isMobile ? 90 : 170}%)`,
         }}
       >
         {bottomMenu.map((menuItem) => (
