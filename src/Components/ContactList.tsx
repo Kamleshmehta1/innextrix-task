@@ -17,7 +17,7 @@ const ContactList = ({
       renderItem={(item) => (
         <List.Item
           onClick={() => handleDialedNumber(item)}
-          style={{ cursor: 'pointer', paddingLeft: 0 }}
+          style={{ cursor: 'pointer', padding: 0 }}
         >
           <List.Item.Meta
             avatar={

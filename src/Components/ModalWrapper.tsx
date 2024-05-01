@@ -13,6 +13,7 @@ function ModalWrapper(props: modalType) {
 
   return (
     <Modal
+      style={{ top: 20 }}
       open={isModalOpen}
       footer={null}
       width={'350px'}

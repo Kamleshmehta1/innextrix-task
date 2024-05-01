@@ -1,6 +1,10 @@
 .contact-list-container {
   overflow: scroll;
-  height: 200px;
+  height: 130px;
+}
+
+.dial-screen {
+  height: 60px;
 }
 
 .contact-list-container::-webkit-scrollbar {
@@ -11,4 +15,60 @@
   color: '#F4F3FE';
   background-color: aliceblue;
   text-align: center;
+}
+.dial-keys {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4b447a;
+  color: white;
+  cursor: pointer;
+}
+
+.dial-number {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+.dial-text {
+  font-size: 8px;
+  text-align: center;
+}
+
+.action-button {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.dialed-user {
+  color: white !important;
+  text-align: center !important;
+}
+.dialed-user-number {
+  display: block;
+  color: white !important;
+  text-align: center !important;
+}
+
+.ongoing-call {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ongoing-call-text {
+  color: white !important;
+}
+
+.dial-menu {
+  height: 280px;
+  margin-top: 20px;
 }
